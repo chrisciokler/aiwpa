@@ -5,7 +5,8 @@
   },
   "scripts": {
     "build": "turbo run build",
-    "build:web": "turbo run build --cwd=./app/web",
+    "build:app": "turbo run build --cwd=./app",
+    "dev:app": "turbo run dev --cwd=./app",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
@@ -20,7 +21,7 @@
   "name": "aiwpa",
   "packageManager": "npm@9.5.1",
   "workspaces": [
-    "app/*",
+    "app",
     "backend/*"
   ]
 }
