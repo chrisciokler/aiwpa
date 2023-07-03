@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "lib": [
+      "ES2021"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "lib/*": [
+        "./src/lib/*"
+      ],
+      "types/*": [
+        "./src/types/*"
+      ],
+      "config/*": [
+        "./src/config/*"
+      ],
+    },
+    "types": [
+      "jest",
+      "@cloudflare/workers-types"
+    ]
+  }
+}

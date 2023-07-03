@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 0 0% 99%;
+    --foreground: 224 71.4% 4.1%;
+ 
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+ 
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+ 
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+ 
+    --primary: 220.9 39.3% 11%;
+    --primary-hovered: 220, 39%, 4%, 1;
+    --primary-foreground: 210 20% 98%;
+ 
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
+ 
+    --accent: 220 14.3% 95.9%;
+    --accent-foreground: 220.9 39.3% 11%;
+ 
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+ 
+    --ring: 217.9 10.6% 64.9%;
+ 
+    --radius: 0.5rem;
+    --skeleton: 220.9 39.3% 90%;
+
+  }
+ 
+  .dark {
+    --background: 240, 10%, 4%;
+    --foreground: 210 20% 98%;
+ 
+    --muted: 240, 10%, 9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+ 
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 210 20% 98%;
+ 
+    --card: 240, 10%, 7%;
+    --card-foreground: 210 20% 98%;
+ 
+    --border: 240, 10%, 14%;
+    --input: 215 27.9% 16.9%;
+ 
+    --primary: 255, 78%, 60%, 1;
+    --primary-hovered: 255, 78%, 31%, 1;
+    --primary-foreground: 210 20% 98%;
+ 
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+ 
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 85.7% 97.3%;
+ 
+    --ring: 255, 78%, 60%, 1;
+    --skeleton: 220.9 39.3% 14%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    -webkit-tap-highlight-color: transparent !important;
+    transition: all 200ms ease-in-out, color 200ms ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+}
+
+@layer components {
+  .header-h {
+   @apply h-[60px] sm:h-[80px] 
+  }
+  .stack {
+    @apply flex flex-col
+  }
+  .section {
+    @apply flex w-full min-h-[100vh]
+  }
+
+  .spacing-xs {
+    @apply gap-1
+  }
+  .spacing-sm {
+    @apply gap-2
+  }
+  .spacing-md {
+    @apply gap-3
+  }
+  .spacing-lg {
+    @apply gap-4
+  }
+  .spacing-xl {
+    @apply gap-5
+  }
+
+  .button-size-xs { @apply py-1 px-3 text-xs }
+  .button-size-sm { @apply py-2 px-3 text-sm}
+  .button-size-md { @apply py-2 px-4 text-base }
+  .button-size-lg { @apply py-2 px-8 text-lg }
+  .button-size-xl { @apply py-3 px-10 text-xl }
+
+  .input-size-xs { @apply py-1 px-2 text-xs }
+  .input-size-sm { @apply py-2 px-3 text-sm }
+  .input-size-md { @apply py-2 px-3 text-base }
+  .input-size-lg { @apply py-2 px-3 text-lg }
+  .input-size-xl { @apply py-3 px-3 text-xl }
+
+}
+
+
+
