@@ -4,6 +4,7 @@ import { extractHtml } from 'lib/crawler';
 import { ChatCompletionRequestMessage } from 'openai-edge';
 import { OpenAIChatCompletionsModelId } from 'types/openai';
 import { openai } from 'config/openai';
+import { INSERTEMAIL } from './db';
 
 export const hello = async (c: Context) => {
   return c.text('🤖 Hello, I am your AI Assistant API!');
@@ -38,4 +39,10 @@ export const siteAnalyzer = async (c: Context) => {
   const stream = streamCompletion(res);
 
   return c.newResponse(stream);
+};
+
+export const subscribe = async (c: Context) => {
+  const results = await INSERTEMAIL(c);
+
+  return c.json({ results });
 };

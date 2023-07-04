@@ -11,11 +11,13 @@ import { useAnalyzer } from '@/hooks/useAnalyzer'
 import { CredentialModal } from '@/components/credentialModal'
 import { ChatMessage } from '../../components/chat-message'
 import { Loader } from '@/components/ui/loader'
-import { useClipboard } from '@mantine/hooks'
+import { useClipboard, useOs } from '@mantine/hooks'
+import { useNavigation } from '@/hooks/useNavigation'
 
-export default function Core() {
+export default function Analyzer() {
+  const os = useOs();
+  const navigate = useNavigation()
   const ref = useRef<HTMLInputElement>(null)
-  const divref = useRef<HTMLDivElement>(null)
   const analyzer = useAnalyzer();
   const { copied, copy } = useClipboard({ timeout: 2000 })
 
@@ -26,9 +28,8 @@ export default function Core() {
 
   const submit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     analyzer.submitPrompt();
-    divref?.current?.focus()
+    if (os === "android" || os === "ios") navigate("#response")
   }
 
   return (
@@ -51,7 +52,7 @@ export default function Core() {
         </Group>
       </div>
 
-      <div className='grid w-full grid-cols-1 sm:grid-cols-2' ref={divref}>
+      <div className='grid w-full grid-cols-1 sm:grid-cols-2'>
         <Stack className='flex-1 pt-4 pb-8 sm:pb-[10rem] sm:border-r p-4 items-center sm:overflow-y-auto max-h-full sm:max-h-[calc(100vh-140px)]'>
           <Stack spacing="md" className='flex-1 w-full max-w-xl'>
             <form onSubmit={submit} className="flex w-full">
@@ -100,7 +101,7 @@ export default function Core() {
           </Stack>
         </Stack>
 
-        <Stack className='flex-1 h-full overflow-y-auto items-center max-h-full sm:max-h-[calc(100vh-140px)]'>
+        <Stack id="response" className='flex-1 h-full overflow-y-auto items-center max-h-full sm:max-h-[calc(100vh-140px)]'>
           <div className='flex sm:hidden w-full max-h-[60px] min-h-[60px] p-4 border-b border-t items-center justify-center'>
             <Group position="right" spacing="sm" className='w-full h-full max-w-7xl'>
               {analyzer.isTyping && <Button variant="secondary" onClick={analyzer.handleStopConversation}>

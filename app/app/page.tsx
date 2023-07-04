@@ -19,7 +19,7 @@ export default function Home() {
             <p className="text-xl font-semibold tracking-tight text-center max-w-[30rem] mt-4">Revolutionize Web Page Analysis: Unleash Mind-blowing AI-Powered Wizardry and Uncover Limitless Possibilities!</p>
 
             <Stack className='mt-8 mb-8'>
-              <Link href="core" shallow>
+              <Link href="analyzer" shallow>
                 <Button size="lg" >Unlock AI Potential</Button>
               </Link>
               <p className="text-center mt-2"><small>100% Free and Open Source.</small></p>
@@ -82,7 +82,7 @@ export default function Home() {
             <p className="text-xl font-semibold tracking-tight text-center max-w-[30rem]">The change is here. What are you gonna do about it?</p>
 
             <div>
-              <Link href="core" shallow>
+              <Link href="analyzer" shallow>
                 <Button className='mt-8'>Unleash the Magic! &mdash; It&rsquo;s Free</Button>
               </Link>
               <p className="text-center mt-2"><small>100% Free and Open Source.</small></p>
