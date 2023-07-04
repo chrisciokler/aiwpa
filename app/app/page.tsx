@@ -75,7 +75,7 @@ export default function Home() {
 
         <Section className='min-h-full mt-[30vh] sm:mt-[20vh] mb-[25vh]'>
           <Stack className="w-full items-center justify-center">
-            <h2 className="text-4xl font-extrabold">AI.WPA</h2>
+            <h2 className="text-4xl font-extrabold">AI WPA</h2>
 
             <h2 className="mt-8 pb-2 text-3xl font-bold tracking-tight transition-colors first:mt-0">Improve your work.</h2>
 
