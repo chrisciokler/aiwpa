@@ -1,19 +1,19 @@
-import { AI_EDGE_FUNCTION_URL } from "@/constants";
-import endent from "endent";
+import { AI_EDGE_FUNCTION_URL } from '@/constants';
+import endent from 'endent';
 
 export const SUBSCRIBE = async (req: { email: string }) => {
   const headersList = {
-    Accept: "*/*",
-    "Content-Type": "application/json",
+    Accept: '*/*',
+    'Content-Type': 'application/json'
   };
 
   const bodyContent = JSON.stringify(req);
 
   try {
     const res = await fetch(`${AI_EDGE_FUNCTION_URL}/api/v1/subscribe`, {
-      method: "POST",
+      method: 'POST',
       body: bodyContent,
-      headers: headersList,
+      headers: headersList
     });
 
     const data = await res.json();
@@ -23,13 +23,10 @@ export const SUBSCRIBE = async (req: { email: string }) => {
   }
 };
 
-export const SITEANALYZER = async (
-  req: { url: string; system: string },
-  controller: AbortController
-) => {
+export const SITEANALYZER = async (req: { url: string; system: string }, controller: AbortController) => {
   const headersList = {
-    Accept: "*/*",
-    "Content-Type": "application/json",
+    Accept: '*/*',
+    'Content-Type': 'application/json'
   };
 
   const system = endent`
@@ -41,27 +38,27 @@ export const SITEANALYZER = async (
 
   `;
 
-  const org = localStorage.getItem("org");
-  const key = localStorage.getItem("key");
-  const model = localStorage.getItem("model") || "gpt-3.5-turbo-16k-0613";
+  const org = localStorage.getItem('org');
+  const key = localStorage.getItem('key');
+  const model = localStorage.getItem('model') || 'gpt-3.5-turbo-16k-0613';
 
   const bodyContent = JSON.stringify({
     ...req,
     system,
     model,
     org,
-    key,
+    key
   });
 
   try {
-    if (!org) throw new Error("Organization missing");
-    if (!key) throw new Error("Api Key missing");
+    if (!org) throw new Error('Organization missing');
+    if (!key) throw new Error('Api Key missing');
 
     return await fetch(`${AI_EDGE_FUNCTION_URL}/api/v1/siteanalyzer`, {
-      method: "POST",
+      method: 'POST',
       signal: controller.signal,
       body: bodyContent,
-      headers: headersList,
+      headers: headersList
     });
   } catch (error) {
     return { ok: false, body: null, error };
@@ -71,7 +68,7 @@ export const SITEANALYZER = async (
 export function createChunkDecoder() {
   const decoder = new TextDecoder();
   return function (chunk: Uint8Array | undefined): string {
-    if (!chunk) return "";
+    if (!chunk) return '';
     return decoder.decode(chunk, { stream: true });
   };
 }

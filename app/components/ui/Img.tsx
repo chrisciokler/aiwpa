@@ -1,4 +1,3 @@
-import { CDN_URL } from '@/constants';
 import { ImageSettings, imagecdn } from '@/lib/image-helpers';
 import clsx from 'clsx';
 import Image from 'next/image';
@@ -21,7 +20,7 @@ export const Img = (props: ImgProps) => {
   return (
     <div className={clsx(props?.className, 'relative overflow-hidden')}>
       <Image
-        className={clsx('object-cover w-full aspect-auto', imageStyles)}
+        className={clsx('aspect-auto w-full object-cover', imageStyles)}
         alt={alt}
         onClick={onClick}
         unoptimized

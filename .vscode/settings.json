@@ -1,0 +1,11 @@
+{
+  "editor.autoClosingBrackets": "always",
+  "editor.autoClosingQuotes": "always",
+  "typescript.preferences.quoteStyle": "single",
+  "javascript.preferences.quoteStyle": "single",
+  "html.completion.attributeDefaultValue": "singlequotes",
+  "prettier.quoteProps": "consistent",
+  "prettier.singleQuote": true,
+  "prettier.jsxSingleQuote": true,
+  "turboConsoleLog.quote": "'"
+}

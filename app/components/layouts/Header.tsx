@@ -1,11 +1,11 @@
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
-import { ModeToggle } from "../themeButton"
-import { Group } from "./Group"
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import { ModeToggle } from '../themeButton';
+import { Group } from './Group';
 
 export const Header = () => {
   return (
-    <header className="flex fixed top-0 z-50 left-0 w-full bg-background border-b items-center justify-center px-4 header-h">
+    <header className="header-h fixed left-0 top-0 z-50 flex w-full items-center justify-center border-b bg-background px-4">
       <div className="flex w-full max-w-7xl items-center justify-between">
         <Link href="/" shallow>
           <h2 className="text-2xl font-extrabold">AI WPA</h2>
@@ -19,5 +19,5 @@ export const Header = () => {
         </Group>
       </div>
     </header>
-  )
-}
+  );
+};

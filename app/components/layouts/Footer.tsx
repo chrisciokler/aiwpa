@@ -1,16 +1,48 @@
-import { Group } from "./Group"
+import Link from 'next/link';
+import { Group } from './Group';
 
 export const Footer = () => {
   return (
-    <footer className="flex flex-col w-full bg-background border-t py-2 items-center justify-center px-4 sm:py-6">
-      <Group className='w-full max-w-[70rem]' position="apart">
-        <p className="font-semibold !color-dimmed"><small>&copy; 2023 AI WPA</small></p>
+    <footer className="flex w-full flex-col items-center justify-center border-t bg-background px-4 py-2 sm:py-6">
+      <Group className="w-full sm:hidden" position="center" spacing="sm">
+        <Link href="/privacy">
+          <p className="font-semibold">
+            <small>Privacy Policy</small>
+          </p>
+        </Link>
 
-        <Group position="right" spacing="sm">
-          <p className="font-semibold !color-dimmed"><small>Developed by @ChrisCiokler</small></p>
-        </Group>
+        <Link href="/terms">
+          <p className="font-semibold">
+            <small>Terms of Use</small>
+          </p>
+        </Link>
       </Group>
 
+      <Group className="w-full max-w-[70rem]" position="apart">
+        <p className="font-semibold">
+          <small>&copy; 2023 AI WPA</small>
+        </p>
+
+        <Group position="center" spacing="sm">
+          <p className="font-semibold">
+            <small>Developed by @ChrisCiokler</small>
+          </p>
+        </Group>
+
+        <Group position="right" spacing="sm" className="hidden sm:flex">
+          <Link href="/privacy">
+            <p className="font-semibold">
+              <small>Privacy Policy</small>
+            </p>
+          </Link>
+
+          <Link href="/terms">
+            <p className="font-semibold">
+              <small>Terms of Use</small>
+            </p>
+          </Link>
+        </Group>
+      </Group>
     </footer>
-  )
-}
+  );
+};

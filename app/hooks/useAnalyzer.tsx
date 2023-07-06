@@ -1,35 +1,33 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Stack } from "@/components/layouts/Stack";
-import { useToast } from "@/components/ui/use-toast";
-import { SITEANALYZER } from "@/lib";
-import endent from "endent";
-import { useState, useRef, useCallback, ChangeEvent } from "react";
+import { Stack } from '@/components/layouts/Stack';
+import { useToast } from '@/components/ui/use-toast';
+import { SITEANALYZER } from '@/lib';
+import { useState, useRef, useCallback, ChangeEvent } from 'react';
 
 export const STREAM_SEPARATOR = '___START_RESPONSE_STREAM___';
-type Props = {
-  onError?: (err: any) => void
-}
-export function useAnalyzer(props?: Props) {
-  const [url, setUrl] = useState("");
-  const [system, setSystemPrompt] = useState("");
+
+export function useAnalyzer() {
+  const [url, setUrl] = useState('');
+  const [system, setSystemPrompt] = useState('');
   const stopConversationRef = useRef<boolean>(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
   const [completion, setCompletation] = useState('');
-  const { toast } = useToast()
+  const { toast } = useToast();
 
   const toggleLoading = (tog?: boolean) => {
-    const value = tog === undefined ? !isLoading : tog
-    setIsLoading(value)
+    const value = tog === undefined ? !isLoading : tog;
+    setIsLoading(value);
   };
 
   const toggleTyping = (tog?: boolean) => {
-    const value = tog === undefined ? !isTyping : tog
-    setIsTyping(value)
+    const value = tog === undefined ? !isTyping : tog;
+    setIsTyping(value);
   };
 
   const submitPrompt = useCallback(async () => {
-    setCompletation('')
+    setCompletation('');
     let content = '';
 
     toggleLoading(true);
@@ -40,20 +38,20 @@ export function useAnalyzer(props?: Props) {
 
       if (!response.ok) {
         toggleLoading(false);
-        const res = response as unknown as any
-        const error = res.error as Error
-        if (error.message && typeof error.message === "string") {
+        const res = response as unknown as any;
+        const error = res.error as Error;
+        if (error.message && typeof error.message === 'string') {
           toast({
-            variant: "destructive",
-            title: "Sorry",
+            variant: 'destructive',
+            title: 'Sorry',
             description: error.message
-          })
+          });
         } else {
           toast({
-            variant: "destructive",
-            title: "Sorry",
-            description: "Something happened. Try again"
-          })
+            variant: 'destructive',
+            title: 'Sorry',
+            description: 'Something happened. Try again'
+          });
         }
         return;
       }
@@ -63,10 +61,10 @@ export function useAnalyzer(props?: Props) {
       if (!data) {
         toggleLoading(false);
         toast({
-          variant: "destructive",
-          title: "Sorry",
-          description: "Something happened. Try again"
-        })
+          variant: 'destructive',
+          title: 'Sorry',
+          description: 'Something happened. Try again'
+        });
         return;
       }
 
@@ -91,11 +89,11 @@ export function useAnalyzer(props?: Props) {
         done = doneReading;
         const chunkValue = decoder.decode(value);
 
-        if (content === "" && chunkValue === '') {
+        if (content === '' && chunkValue === '') {
           toast({
-            variant: "destructive",
-            title: "Sorry",
-            description:
+            variant: 'destructive',
+            title: 'Sorry',
+            description: (
               <Stack spacing="xs">
                 <p>Something happened.</p>
                 <p>Could be one of this reasons.</p>
@@ -108,7 +106,8 @@ export function useAnalyzer(props?: Props) {
 
                 <p>Max token count is up to 16k on GPT-3.5 and 32k on GPT-4</p>
               </Stack>
-          })
+            )
+          });
         }
 
         if (!didHandleHeader) {
@@ -117,27 +116,25 @@ export function useAnalyzer(props?: Props) {
             const parts = startText.split(STREAM_SEPARATOR);
 
             content = content + parts[1];
-            setCompletation(content)
+            setCompletation(content);
             didHandleHeader = true;
           }
         } else {
           content = content + chunkValue;
-          setCompletation(content)
+          setCompletation(content);
         }
       }
     } catch (e) {
       toast({
-        variant: "destructive",
-        title: "Sorry",
-        description: "Something happened. Try again"
-      })
+        variant: 'destructive',
+        title: 'Sorry',
+        description: 'Something happened. Try again'
+      });
     }
 
     toggleLoading(false);
     toggleTyping(false);
   }, [url, system]);
-
-
 
   const handleStopConversation = () => {
     stopConversationRef.current = true;
@@ -147,18 +144,18 @@ export function useAnalyzer(props?: Props) {
   };
 
   const clean = () => {
-    setSystemPrompt("")
-    setCompletation("")
-    setUrl("")
-  }
+    setSystemPrompt('');
+    setCompletation('');
+    setUrl('');
+  };
 
   const handleUrl = (e: ChangeEvent<HTMLInputElement>) => {
-    setUrl(e.currentTarget.value)
-  }
+    setUrl(e.currentTarget.value);
+  };
 
   const handleInput = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    setSystemPrompt(e.currentTarget.value)
-  }
+    setSystemPrompt(e.currentTarget.value);
+  };
 
   return {
     url,
@@ -172,5 +169,5 @@ export function useAnalyzer(props?: Props) {
     isTyping,
     submitPrompt,
     handleStopConversation
-  }
+  };
 }

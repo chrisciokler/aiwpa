@@ -1,19 +1,19 @@
-'use client'
+'use client';
 
-import { FC, memo } from 'react'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { coldarkDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
-import { Button } from '@/components/ui/button'
-import { IconCheck, IconCopy, IconDownload } from '@tabler/icons-react'
-import { useClipboard } from '@mantine/hooks'
+import { FC, memo } from 'react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { coldarkDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { Button } from '@/components/ui/button';
+import { IconCheck, IconCopy } from '@tabler/icons-react';
+import { useClipboard } from '@mantine/hooks';
 
 interface Props {
-  language: string
-  value: string
+  language: string;
+  value: string;
 }
 
 interface languageMap {
-  [key: string]: string | undefined
+  [key: string]: string | undefined;
 }
 
 export const programmingLanguages: languageMap = {
@@ -41,36 +41,31 @@ export const programmingLanguages: languageMap = {
   html: '.html',
   css: '.css'
   // add more file extensions here, make sure the key is same as language prop in CodeBlock.tsx component
-}
+};
 
 export const generateRandomString = (length: number, lowercase = false) => {
-  const chars = 'ABCDEFGHJKLMNPQRSTUVWXY3456789' // excluding similar looking characters like Z, 2, I, 1, O, 0
-  let result = ''
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXY3456789'; // excluding similar looking characters like Z, 2, I, 1, O, 0
+  let result = '';
   for (let i = 0; i < length; i++) {
-    result += chars.charAt(Math.floor(Math.random() * chars.length))
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
   }
-  return lowercase ? result.toLowerCase() : result
-}
+  return lowercase ? result.toLowerCase() : result;
+};
 
 const CodeBlock: FC<Props> = memo(({ language, value }) => {
-  const { copied, copy } = useClipboard({ timeout: 2000 })
+  const { copied, copy } = useClipboard({ timeout: 2000 });
 
   const onCopy = () => {
-    if (copied) return
-    copy(value)
-  }
+    if (copied) return;
+    copy(value);
+  };
 
   return (
-    <div className="codeblock relative w-full bg-zinc-950 font-sans border">
+    <div className="codeblock relative w-full border bg-zinc-950 font-sans">
       <div className="flex w-full items-center justify-between bg-zinc-800 px-6 py-2 pr-4 text-zinc-100">
         <span className="text-xs lowercase">{language}</span>
         <div className="flex items-center space-x-1">
-
-          <Button
-            variant="ghost"
-            size="iconxs"
-            onClick={onCopy}
-          >
+          <Button variant="ghost" size="iconxs" onClick={onCopy}>
             {copied ? <IconCheck size={18} stroke={1.5} /> : <IconCopy size={18} stroke={1.5} />}
             <span className="sr-only">Copy code</span>
           </Button>
@@ -97,8 +92,8 @@ const CodeBlock: FC<Props> = memo(({ language, value }) => {
         {value}
       </SyntaxHighlighter>
     </div>
-  )
-})
-CodeBlock.displayName = 'CodeBlock'
+  );
+});
+CodeBlock.displayName = 'CodeBlock';
 
-export { CodeBlock }
+export { CodeBlock };
