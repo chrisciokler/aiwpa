@@ -24,9 +24,11 @@ export const Footer = () => {
         </p>
 
         <Group position="center" spacing="sm">
-          <p className="font-semibold">
-            <small>Developed by @ChrisCiokler</small>
-          </p>
+          <Link href="https://github.com/chrisciokler" target="_blank">
+            <p className="font-semibold">
+              <small>Developed by @ChrisCiokler</small>
+            </p>
+          </Link>
         </Group>
 
         <Group position="right" spacing="sm" className="hidden sm:flex">

@@ -26,9 +26,11 @@ export default function Home() {
               <Link href="analyzer" shallow>
                 <Button size="lg">Unlock AI Potential</Button>
               </Link>
-              <p className="mt-2 text-center">
-                <small>100% Free and Open Source.</small>
-              </p>
+              <Link href="https://github.com/chrisciokler/aiwpa" target="_blank">
+                <p className="mt-2 text-center">
+                  <small>100% Free and Open Source.</small>
+                </p>
+              </Link>
             </Stack>
 
             <Tablet />
@@ -90,9 +92,11 @@ export default function Home() {
               <Link href="analyzer" shallow>
                 <Button className="mt-8">Unleash the Magic! &mdash; It&rsquo;s Free</Button>
               </Link>
-              <p className="mt-2 text-center">
-                <small>100% Free and Open Source.</small>
-              </p>
+              <Link href="https://github.com/chrisciokler/aiwpa" target="_blank">
+                <p className="mt-2 text-center">
+                  <small>100% Free and Open Source.</small>
+                </p>
+              </Link>
             </div>
           </Stack>
         </Section>
