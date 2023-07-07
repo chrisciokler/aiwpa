@@ -13,7 +13,8 @@ export const Header = () => {
 
         <Group position="right" spacing="md">
           <ModeToggle />
-          <Link href="analyzer" shallow>
+
+          <Link href="/analyzer" shallow>
             <Button size="sm">Start Analysing</Button>
           </Link>
         </Group>

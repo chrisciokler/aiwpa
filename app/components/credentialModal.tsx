@@ -17,6 +17,7 @@ import { ChangeEvent, useEffect, useState } from 'react';
 import { Stack } from './layouts/Stack';
 import { ItemProps, SelectInput } from './ui/select';
 import { useToast } from './ui/use-toast';
+import Link from 'next/link';
 
 export const selectModelData: ItemProps[] = [
   { label: 'GPT-3.5', value: 'gpt-3.5-turbo-16k-0613' },
@@ -87,9 +88,15 @@ export function CredentialModal() {
               OpenAI Model
             </Label>
             <SelectInput data={selectModelData} value={model} onChange={modelHandler} />
+
+            <Link href="https://platform.openai.com/account/org-settings" target="_blank">
+              <p className="text-indigo-600">
+                <small>Don't have credentials? Get it now</small>
+              </p>
+            </Link>
           </Stack>
         </div>
-        <DialogFooter>
+        <DialogFooter className="flex flex-col">
           <DialogClose asChild>
             <Button type="submit" onClick={credentialsSaved}>
               Save changes
