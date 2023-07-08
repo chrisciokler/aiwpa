@@ -1,5 +1,6 @@
 export const CDN_URL = 'https://images.weserv.nl/?url=';
 export const AI_EDGE_FUNCTION_URL = process.env.NEXT_PUBLIC_AI_API_ENDPOINT || '';
+export const isProduction = process.env.NODE_ENV === 'production';
 
 export const templates = [
   { title: 'Site resume', description: 'What is the site submitted about. Explain all the features that it has and pricing plans if any.' },
