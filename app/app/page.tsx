@@ -27,7 +27,7 @@ export default function Home() {
                 <Button size="lg">Unlock AI Potential</Button>
               </Link>
               <Link href="https://github.com/chrisciokler/aiwpa" target="_blank">
-                <p className="mt-2 text-center">
+                <p className="mt-2 text-center hover:underline">
                   <small>100% Free and Open Source.</small>
                 </p>
               </Link>
@@ -93,7 +93,7 @@ export default function Home() {
                 <Button className="mt-8">Unleash the Magic! &mdash; It&rsquo;s Free</Button>
               </Link>
               <Link href="https://github.com/chrisciokler/aiwpa" target="_blank">
-                <p className="mt-2 text-center">
+                <p className="mt-2 text-center hover:underline">
                   <small>100% Free and Open Source.</small>
                 </p>
               </Link>
