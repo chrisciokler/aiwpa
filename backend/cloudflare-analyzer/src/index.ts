@@ -11,7 +11,7 @@ app.use('*', poweredBy());
 app.use(
   '*',
   cors({
-    origin: ['https://aiwpa.com', 'https://aiwpa.vercel.app', 'https://localhost:3000', 'http://localhost:3000']
+    origin: ['https://www.aiwebpageanalyzer.com', 'https://aiwebpageanalyzer.com', 'https://aiwpa.vercel.app']
   })
 );
 app.use('*', ratelimit);
