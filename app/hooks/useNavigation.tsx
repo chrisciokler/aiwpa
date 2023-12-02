@@ -4,7 +4,7 @@ export const useNavigation = () => {
   const router = useRouter();
 
   const navigate = (url: string) => {
-    router.push(url, { shallow: true });
+    router.push(url);
   };
 
   return navigate;
