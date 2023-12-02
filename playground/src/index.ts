@@ -1,16 +1,6 @@
-const cleanText = (s) =>
-  s
-    .trim()
-    .replace(/\s\s+/g, ' ')
-    .replace(/<svg.*?>.*?<\/svg>/gs, '')
-    .replace(/<style.*?>.*?<\/style>/gs, '')
-    .replace(/<script.*?>.*?<\/script>/gs, '')
-    .replace(/style=".*?"/g, '')
-    .replace(/class=".*?"/g, '')
-    .replace(/<!-- [^"]* -->/g, '')
-    .replace(/<!--[^"]*-->/g, '');
+import fs from 'fs';
 
-export const advancedClean = (s:string) =>
+const cleanText = (s:string) =>
   s
     .trim()
     .replace(/\s\s+/g, ' ')
@@ -39,9 +29,17 @@ export const extractHtml = async (uri: string) => {
   try {
     const res = await fetch(url);
     const data = await res.text();
-    const cleaned = advancedClean(data);
+    const cleaned = cleanText(data);
     return cleaned;
   } catch (error) {
+    console.log('🚀 | file: index.ts:22 | extractHtml | error:', error)
     return 'Sorry. Some error happened during the HTML extraction.';
   }
 };
+
+const run = async () => {
+  const data = await extractHtml("https://www.cubachama.com/")
+  await fs.writeFileSync("./data2.html", data);
+};
+
+run();

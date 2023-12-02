@@ -4,6 +4,7 @@ import { MultiRegionRatelimit } from '@upstash/ratelimit';
 
 const cache = new Map();
 export const ratelimit = async (c: Context, next: Next) => {
+  console.log('Start rate limiting');
   const url = c.env.REDIS_URL as string;
   const token = c.env.REDIS_TOKEN as string;
 

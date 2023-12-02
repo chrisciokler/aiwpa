@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
 import { Analytics } from '@/components/analytics';
+import { RouterTransition } from '@/components/router-transition';
 
 const inter = Inter({ subsets: ['cyrillic'] });
 
@@ -16,6 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <RouterTransition />
           {children}
           <Toaster />
         </ThemeProvider>

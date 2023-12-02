@@ -18,22 +18,23 @@ import { Stack } from './layouts/Stack';
 import { ItemProps, SelectInput } from './ui/select';
 import { useToast } from './ui/use-toast';
 import Link from 'next/link';
+import { MODEL } from '@/constants';
 
 export const selectModelData: ItemProps[] = [
-  { label: 'GPT-3.5', value: 'gpt-3.5-turbo-16k-0613' },
-  { label: 'GPT-4', value: 'gpt-4-32k-0613' }
+  { label: 'GPT-3.5', value: MODEL.gpt3 },
+  { label: 'GPT-4', value: MODEL.gpt4 }
 ];
 
 export function CredentialModal() {
   const [org, setOrg] = useState('');
   const [key, setKey] = useState('');
-  const [model, setModel] = useState('gpt-3.5-turbo-16k-0613');
+  const [model, setModel] = useState(MODEL.gpt3);
   const { toast } = useToast();
 
   useEffect(() => {
     setOrg(localStorage.getItem('org') || '');
     setKey(localStorage.getItem('key') || '');
-    setModel(localStorage.getItem('model') || 'gpt-3.5-turbo-16k-0613');
+    setModel(localStorage.getItem('model') || MODEL.gpt3);
   }, []);
 
   const apiKeyinputHandler = (e: ChangeEvent<HTMLInputElement>) => {

@@ -1,6 +1,6 @@
 import { Context } from 'hono';
-import { moderate, streamCompletion } from 'lib/openai';
-import { extractHtml } from 'lib/crawler';
+import { moderate, streamCompletion, tokenCounter } from 'lib/openai';
+import { advancedClean, extractHtml } from 'lib/crawler';
 import { ChatCompletionRequestMessage } from 'openai-edge';
 import { OpenAIChatCompletionsModelId } from 'types/openai';
 import { openai } from 'config/openai';
@@ -20,20 +20,30 @@ export const siteAnalyzer = async (c: Context) => {
 
   const ai = openai(org, key);
 
-  const response = await extractHtml(url);
+  let response = await extractHtml(url);
+  let data = response;
 
   const messages: ChatCompletionRequestMessage[] = [
     { role: 'system', content: system },
-    { role: 'user', content: response }
+    { role: 'user', content: data }
   ];
 
   const notallowed = moderate(ai, messages);
   if (notallowed) c.json({ notallowed });
 
-  const res = await ai.createChatCompletion({
+  const payload = {
     model,
     messages,
     stream: true
+  };
+
+  const res = await fetch('https://api.openai.com/v1/chat/completions', {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${key ?? ''}`
+    },
+    method: 'POST',
+    body: JSON.stringify(payload)
   });
 
   const stream = streamCompletion(res);

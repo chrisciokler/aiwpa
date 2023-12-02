@@ -1,6 +1,7 @@
 import { createParser, ParsedEvent, ReconnectInterval } from 'eventsource-parser';
 import { ChatCompletionRequestMessage, OpenAIApi } from 'openai-edge/types/api';
 import { OpenAIModelIdWithType } from 'types/openai';
+import GPT3Tokenizer from 'gpt3-tokenizer';
 
 const getChunkText = (response: any, model: OpenAIModelIdWithType) => {
   switch (model.type) {
@@ -67,4 +68,11 @@ export const streamCompletion = (res: Response) => {
       controller.close();
     }
   });
+};
+
+export const tokenCounter = (text: string) => {
+  const tokenizer = new GPT3Tokenizer({ type: 'gpt3' });
+  const allTextEncoded = tokenizer.encode(text);
+  const tokenCount = allTextEncoded.text.length;
+  return tokenCount;
 };
