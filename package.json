@@ -25,5 +25,8 @@
     "app",
     "playground",
     "backend/*"
-  ]
+  ],
+  "dependencies": {
+    "cookies-next": "^4.1.1"
+  }
 }

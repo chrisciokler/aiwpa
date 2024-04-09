@@ -2,18 +2,23 @@
 import { useEffect } from 'react';
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
-
+import { setCookie } from 'cookies-next';
 import { Button } from '@/components/ui/button';
 
 export function ModeToggle() {
   const { theme, setTheme, systemTheme } = useTheme();
 
-  const toggle = () => setTheme(theme === 'dark' ? 'light' : 'dark');
+  const themeHandler = (theme: "dark" | "light") => {
+    setCookie('theme', theme);
+    setTheme(theme)
+  }
+
+  const toggle = () => themeHandler(theme === 'dark' ? 'light' : 'dark');
 
   useEffect(() => {
     let tm = theme;
     if (tm === 'system') tm = systemTheme;
-    tm !== 'system' && theme === 'system' && setTheme(tm === 'dark' ? 'dark' : 'light');
+    tm !== 'system' && theme === 'system' && themeHandler(tm === 'dark' ? 'dark' : 'light');
   }, [systemTheme]);
 
   return (
