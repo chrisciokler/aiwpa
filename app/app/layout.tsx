@@ -24,12 +24,15 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html lang="en">
+      <head>
+        <script async defer src="https://analytics.us.umami.is/script.js" data-cache="true" data-website-id="398f4887-88ef-47f0-9d7a-3f5423b7c6dc" ></script>
+      </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme={theme} enableSystem>
           {children}
           <Toaster />
         </ThemeProvider>
-        <Analytics />
+        {/* <Analytics /> */}
       </body>
     </html>
   );

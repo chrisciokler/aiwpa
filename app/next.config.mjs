@@ -24,6 +24,9 @@ const nextConfig = {
   // Optionally, add any other Next.js config below
   reactStrictMode: true,
 
+  compiler: {
+    removeConsole: isProduction
+  }
 };
 
 export default withMDX(nextConfig);
