@@ -7,4 +7,4 @@ compatibility_flags = [ "streams_enable_constructors" ]
 [[d1_databases]]
 binding = "DB"
 database_name = "email"
-database_id = "<database_id>"
+database_id = "b81ed805-e034-4660-baaa-d6997614ce53"

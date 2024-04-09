@@ -1,16 +1,19 @@
 'use client';
 import { isProduction } from '@/constants';
-import { GoogleAnalytics } from 'nextjs-google-analytics';
+import Head from 'next/head';
+import Script from 'next/script';
+// import { GoogleAnalytics } from 'nextjs-google-analytics';
 
 export const Analytics = () => {
   return (
     <>
       {isProduction && (
         <>
-          <GoogleAnalytics trackPageViews strategy="afterInteractive" />
-          {/* <Head>
-            <Script src="../scripts/hotjar.js" strategy="afterInteractive" />
-          </Head> */}
+          {/* <GoogleAnalytics trackPageViews strategy="afterInteractive" /> */}
+          <Head>
+            {/* <Script src="../scripts/hotjar.js" strategy="afterInteractive" /> */}
+            <Script defer src="https://analytics.us.umami.is/script.js" data-website-id="398f4887-88ef-47f0-9d7a-3f5423b7c6dc" strategy="afterInteractive"></Script>
+          </Head>
         </>
       )}
     </>
