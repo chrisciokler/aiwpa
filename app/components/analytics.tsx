@@ -8,15 +8,22 @@ export const Analytics = () => {
 
   return (
     <>
-      {isProduction && (
-        <>
-          {/* <GoogleAnalytics trackPageViews strategy="afterInteractive" /> */}
-          <Head>
-            {/* <Script src="../scripts/hotjar.js" strategy="afterInteractive" /> */}
-            <Script defer src="https://analytics.us.umami.is/script.js" data-cache="true" data-website-id="398f4887-88ef-47f0-9d7a-3f5423b7c6dc" strategy="afterInteractive"></Script>
-          </Head>
-        </>
-      )}
+      <Head>
+        {/* <Script src="../scripts/hotjar.js" strategy="afterInteractive" /> */}
+        <script defer src="https://analytics.us.umami.is/script.js" data-cache="true" data-website-id="398f4887-88ef-47f0-9d7a-3f5423b7c6dc"></script>
+
+        {/* {isProduction && (
+          <>
+            <GoogleAnalytics trackPageViews strategy="afterInteractive" />
+            <Head>
+              <Script src="../scripts/hotjar.js" strategy="afterInteractive" />
+              <Script defer src="https://analytics.us.umami.is/script.js" data-cache="true" data-website-id="398f4887-88ef-47f0-9d7a-3f5423b7c6dc" strategy="afterInteractive"></Script>
+            </Head>
+          </>
+        )} */}
+      </Head>
+
+
     </>
   );
 };
