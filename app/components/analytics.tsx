@@ -5,7 +5,6 @@ import Script from 'next/script';
 // import { GoogleAnalytics } from 'nextjs-google-analytics';
 
 export const Analytics = () => {
-  console.log('🚀 | Analytics | isProduction:', isProduction)
 
   return (
     <>
