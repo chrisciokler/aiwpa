@@ -6,5 +6,5 @@ compatibility_flags = [ "streams_enable_constructors" ]
 
 [[d1_databases]]
 binding = "DB"
-database_name = "emailsv2"
-database_id = "6193778c-f94d-46c2-a4e0-81dc2c1d6c47"
+database_name = ""
+database_id = ""
